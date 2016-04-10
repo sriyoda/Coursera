@@ -1,0 +1,41 @@
+---
+title: "Airport Connectedness"
+author: "Sricharan Maddineni"
+date: "April 8, 2016"
+output: ioslides_presentation
+---
+
+## Intro
+
+Aviation connects people and goods in almost every corner of the world.
+
+Today's global connectedness has a profound impact on economic and cultural growth. Airports are the main instruments through which this global connectedness takes shape.
+
+The world's busiest airport is HartsfieldJackson Atlanta International Airport in the United States. More than 88 million passengers traveled through ATL in 2009 alone, with aircrafts taking-off or landing every 37 seconds.
+
+## Loading dplyr and ggplot
+
+```{r, echo=FALSE,error=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+## Plotting Countries GDP compared to Population
+
+```{r, echo=FALSE, error=FALSE, warning=FALSE}
+
+world1 <- read.csv("world.csv", stringsAsFactors = F)
+pass <- read.csv("passenger_tots.csv", stringsAsFactors = F)
+world2 <- filter(world1, Population.2010>81776930)
+
+g <- ggplot(world2, aes(Population.2010, GDP..BILLIONS.)) +
+    geom_jitter() + geom_text(aes(label=COUNTRY), vjust=1.5) + theme_bw()
+g
+```
+
+## The App
+[Link to app](https://sriyoda.shinyapps.io/ShinyApp/)
+
+<img src="app.png" />
+
+
